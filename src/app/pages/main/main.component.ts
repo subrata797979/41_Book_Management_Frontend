@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
 
   public sidebarToggle($event: any): void {
     this.sidebarOpened = !this.sidebarOpened;
+    console.log("button clicked");
   }
 
 }

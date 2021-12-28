@@ -1,6 +1,11 @@
+
+<app-header (toogleSidebarEvent)="sidebarToggle($event)"></app-header>
+
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened class="bg-danger px-5" >SideBar</mat-drawer>
-    <mat-drawer-content class="bg-primary px-5">
+    <mat-drawer #drawer mode="side" [opened]="sidebarOpened" class="bg-light">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>

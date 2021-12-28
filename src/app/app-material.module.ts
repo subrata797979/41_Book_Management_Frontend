@@ -10,6 +10,9 @@ import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 const materialModules = [
   MatButtonModule,
@@ -21,8 +24,11 @@ const materialModules = [
   MatListModule,
   MatCardModule,
   MatTableModule,
+  MatFormFieldModule,
   MatPaginatorModule,
   FlexLayoutModule,
+  MatInputModule,
+  MatSelectModule,
 ];
 
 @NgModule({
