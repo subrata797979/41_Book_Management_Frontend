@@ -8,9 +8,9 @@
     <mat-card fxFlex="25">
       <app-card label="User engagement" total="9" percentage="10"></app-card>
     </mat-card> -->
-    <mat-card fxFlex="25" *ngFor="let card of cards">
+    <mat-card fxFlex="50" *ngFor="let card of cards">
+        <app-card [label]="card.label"  total="2" percentage="10"></app-card>
       <!-- <app-card [attr.label]="cards.label" total="2" percentage="10"></app-card> -->
-      <app-card [label]="card.label"  total="2" percentage="10"></app-card>
 
     </mat-card>
 </div>

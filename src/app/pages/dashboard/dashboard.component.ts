@@ -21,6 +21,18 @@ export class DashboardComponent implements OnInit {
     },
     {
       label: "Germany"
+    },
+    {
+      label: "India"
+    },
+    {
+      label: "Canada"
+    },
+    {
+      label: "Japan"
+    },
+    {
+      label: "Germany"
     }
   ];
 
