@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +10,16 @@ export class MainComponent implements OnInit {
 
   public sidebarOpened: boolean = true;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.navigate(['/dashboard-home']);
+  }
 
   public sidebarToggle($event: any): void {
     this.sidebarOpened = !this.sidebarOpened;
     console.log("button clicked");
   }
+
 
 }

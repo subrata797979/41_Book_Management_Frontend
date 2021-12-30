@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class BooksService {
 
-  public books:any = [
+  private books:any = [
     { "_id" : 634, "title" : "Redis in Action", "isbn" : "1617290858", "pageCount" : 0, "publishedDate" : { "$date" : "2013-06-18T00:00:00.000-0700" }, "thumbnailUrl" : "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/carlson.jpg", "status" : "PUBLISH", "authors" : [ "Josiah Carlson" ], "categories" : [] },
     { "_id" : 636, "title" : "Using the TI-83 Plus/TI-84 Plus", "isbn" : "161729084X", "pageCount" : 0, "publishedDate" : { "$date" : "2013-08-19T00:00:00.000-0700" }, "thumbnailUrl" : "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/mitchell2.jpg", "status" : "PUBLISH", "authors" : [ "Christopher R. Mitchell" ], "categories" : [] },
     { "_id" : 637, "title" : "Neo4j in Action", "isbn" : "1617290769", "pageCount" : 0, "thumbnailUrl" : "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/partner.jpg", "status" : "MEAP", "authors" : [ "Jonas Partner", "Aleksa Vukotic", "", "Nicki Watt" ], "categories" : [] },
@@ -150,6 +150,10 @@ export class BooksService {
       
   //   }
   // ]
+
+  getData() : any {
+    return this.books;
+  }
 
   findTotalBooks() : any {
     const total_books = this.books.length;

@@ -31,6 +31,8 @@ export class DashboardComponent implements OnInit {
 
   setFields() {
     this.cards[0].total = this.bookService.findTotalBooks();
+    console.log(this.bookService.getData());
+    
   }
 
   onChangeFields() {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import {FormGroup, FormControl} from '@angular/forms';
 
 interface Food {
   value: string;
@@ -13,6 +14,11 @@ interface Food {
 })
 export class HeaderComponent implements OnInit {
 
+  range: any = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
+
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -20,6 +26,7 @@ export class HeaderComponent implements OnInit {
   ];
 
   @Output() toogleSidebarEvent: EventEmitter<any> = new EventEmitter();
+  
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
