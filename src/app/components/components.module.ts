@@ -7,10 +7,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './table/table.component';
 import { AppMaterialModule } from '../app-material.module';
 import { RouterModule } from '@angular/router';
-import * as Highcharts from "highcharts";
-import HC_exporting from "highcharts/modules/exporting";
-import { HighchartsChartModule } from 'highcharts-angular';
-HC_exporting(Highcharts);
 
 const components = [
   CardComponent,
@@ -25,7 +21,6 @@ const components = [
   imports: [
     CommonModule,
     RouterModule,
-    HighchartsChartModule,
     AppMaterialModule,
   ],
   exports: components,

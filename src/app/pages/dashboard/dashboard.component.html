@@ -1,17 +1,7 @@
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="stats-cards">
-    <!-- <mat-card fxFlex="25">
-      <app-card label="New Users" total="12" percentage="50"></app-card>
-    </mat-card>
-    <mat-card fxFlex="25">
-      <app-card label="User retention" total="10" percentage="10"></app-card>
-    </mat-card>
-    <mat-card fxFlex="25">
-      <app-card label="User engagement" total="9" percentage="10"></app-card>
-    </mat-card> -->
-    <mat-card fxFlex="50" *ngFor="let card of cards">
-        <app-card [label]="card.label"  total="2" percentage="10"></app-card>
-      <!-- <app-card [attr.label]="cards.label" total="2" percentage="10"></app-card> -->
-
-    </mat-card>
+<div class="row">
+  <div *ngFor="let card of cards" [ngClass]="'col-sm-6 col-md-4 col-lg-3'">
+    <app-card [label]="card.label"  total="2" percentage="10" class="p-3"></app-card>
+  </div>
 </div>
+
 
