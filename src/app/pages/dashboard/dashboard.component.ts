@@ -1,6 +1,7 @@
 import { BooksService } from './../../services/books.service';
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "../../app.service";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,13 @@ import { AppService } from "../../app.service";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private appService: AppService, private bookService: BooksService) {}
 
+  constructor(private appService: AppService, private bookService: BooksService, private location:Location) {}
+
+  date: any = {
+    start : null,
+    end : null
+  }
 
   public cards:any = [
     {
@@ -30,13 +36,13 @@ export class DashboardComponent implements OnInit {
   }
 
   setFields() {
-    this.cards[0].total = this.bookService.findTotalBooks();
-    console.log(this.bookService.getData());
     
   }
 
   onChangeFields() {
     // on changing date range, data will also be changed
+    this.date = this.location.getState();
+    console.log(this.date);
   }
 }
 

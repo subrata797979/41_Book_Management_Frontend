@@ -1,11 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AppService } from 'src/app/app.service';
-import {FormGroup, FormControl} from '@angular/forms';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { FormGroup, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,21 +9,20 @@ interface Food {
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  rangeValue: any;
   range: any = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
   });
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  date: any = {
+    start : null,
+    end : null
+  }
 
   @Output() toogleSidebarEvent: EventEmitter<any> = new EventEmitter();
   
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private appRouter: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +30,13 @@ export class HeaderComponent implements OnInit {
   public triggerToggleSidebar(): void{
     this.toogleSidebarEvent.emit();
     this.appService.triggerResizeEvent();
+  }
+
+  dateRangeChange(dateRangeStart: any, dateRangeEnd: any) {
+    this.date.start = dateRangeStart.value;
+    this.date.end = dateRangeEnd.value;
+    // console.log(this.date);
+    this.appRouter.navigateByUrl('/dashboard-home', { state: this.date });
   }
 
 }
