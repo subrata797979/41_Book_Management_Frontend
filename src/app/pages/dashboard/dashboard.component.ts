@@ -1,7 +1,8 @@
 import { BooksService } from './../../services/books.service';
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "../../app.service";
-import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,9 @@ import { Location } from '@angular/common';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private appService: AppService, private bookService: BooksService, private location:Location) {}
+  constructor(private appService: AppService, private bookService: BooksService) {}
+  ASSET_URL = environment.apiUrl;
+  bookList: any;
 
   date: any = {
     start : null,
@@ -32,17 +35,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.triggerResizeEvent();
-    this.setFields();
+    this.getBooks();
   }
 
-  setFields() {
+  getBooks() {
     
   }
 
-  onChangeFields() {
-    // on changing date range, data will also be changed
-    this.date = this.location.getState();
-    console.log(this.date);
-  }
 }
 

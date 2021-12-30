@@ -3,14 +3,21 @@ ul {
     font-weight: 800;
     font-stretch: expanded;
 }
+
+ul :hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 ul > li {
-    background-color: #d6d6d6;
     padding-top: 20px;
     padding-bottom: 20px;
-    border: none;
+    border: 1px solid rgb(230, 227, 227);
     margin-top: 5px;
     margin-bottom: 5px;
 }
 ul > li > a {
     text-decoration: none;
+    width: 100%;
+    box-shadow: none;
+    color: rgb(116, 172, 255);
 }

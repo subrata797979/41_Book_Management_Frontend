@@ -35,8 +35,7 @@ export class HeaderComponent implements OnInit {
   dateRangeChange(dateRangeStart: any, dateRangeEnd: any) {
     this.date.start = dateRangeStart.value;
     this.date.end = dateRangeEnd.value;
-    // console.log(this.date);
-    this.appRouter.navigateByUrl('/dashboard-home', { state: this.date });
+    console.log(this.date);
   }
 
 }
