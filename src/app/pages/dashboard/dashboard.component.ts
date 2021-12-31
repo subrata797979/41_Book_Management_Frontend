@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   totalBooks: any;
   filteredData: any;
   newBooks: any;
+  pages: any = 0;
+  avgPages: any = 0;
 
   date: any | null = {
     start : new Date('12/13/2000'),
@@ -31,6 +33,46 @@ export class DashboardComponent implements OnInit {
     {
       "title" : "New Books  ",
       "total" : "51.33K"
+    },
+    {
+      "title" : "Average Pages / Book",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "Total Books",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "New Books  ",
+      "total" : "51.33K"
+    },
+    {
+      "title" : "Average Pages / Book",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "Total Books",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "New Books  ",
+      "total" : "51.33K"
+    },
+    {
+      "title" : "Average Pages / Book",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "Total Books",
+      "total" : "3.6K"
+    },
+    {
+      "title" : "New Books  ",
+      "total" : "51.33K"
+    },
+    {
+      "title" : "ADD",
+      "total" : "(Another Field)"
     }
   ]
 
@@ -86,6 +128,12 @@ export class DashboardComponent implements OnInit {
         // --------------------------------------
         // 2. new books
         this.newBooks = this.filteredData.length;
+
+        // 3. average pages / book
+        this.bookList.forEach( (obj: { pageCount: number; }) => {
+          this.pages = this.pages + obj.pageCount;
+        })
+        this.avgPages = Math.floor(this.pages/this.newBooks);
         
       }
 
@@ -96,6 +144,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.totalBooks)
     this.cards[0].total = this.totalBooks;
     this.cards[1].total = this.newBooks;
+    this.cards[2].total = this.avgPages;
   }
 
 }
