@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private appService: AppService, private bookService: BooksService) {}
   ASSET_URL = environment.apiUrl;
   bookList: any;
+  totalBooks: any;
 
   date: any = {
     start : null,
@@ -36,10 +37,31 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.appService.triggerResizeEvent();
     this.getBooks();
+
+    // waiting for data to show up
+    setTimeout(()=>{     
+      this.setCards();                    
+    }, 1000);
+    
   }
 
-  getBooks() {
-    
+  getBooks(){
+    this.bookService.getBooks().subscribe((data)=> {
+
+      // loggin data.data
+      console.log(data.data);
+
+      // getting data from api and setting it to booklist object
+      this.bookList = data.data;
+
+      // getting totalBooks from id
+      this.totalBooks = data.data.length;
+    })
+  }
+
+  setCards() {
+    console.log(this.totalBooks)
+    this.cards[0].total = this.totalBooks;
   }
 
 }
