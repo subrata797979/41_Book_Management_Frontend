@@ -36,6 +36,8 @@ export class HeaderComponent implements OnInit {
     this.date.start = dateRangeStart.value;
     this.date.end = dateRangeEnd.value;
     console.log(this.date);
+    // localStorage.setItem('dateLocal', this.date);
+    localStorage.setItem('dateLocal', JSON.stringify(this.date));
   }
 
 }

@@ -7,8 +7,8 @@
 
   <!-- datePicker -->
 
-  <mat-form-field appearance="fill" class="fs-6">
-    <mat-label>Enter a date range</mat-label>
+  <mat-form-field appearance="fill" class="fs-6 bg-white">
+    <mat-label class="text-primary">Enter a date range</mat-label>
     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
       <input matStartDate formControlName="start" placeholder="Start date" #dateRangeStart>
       <input matEndDate formControlName="end" placeholder="End date" #dateRangeEnd (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">

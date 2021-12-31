@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   bookList: any;
   totalBooks: any;
 
-  date: any = {
+  date: any | null = {
     start : null,
     end : null
   }
@@ -56,6 +56,18 @@ export class DashboardComponent implements OnInit {
 
       // getting totalBooks from id
       this.totalBooks = data.data.length;
+
+      // getting date obj from localstorage
+      const lang: string | null = localStorage.getItem('dateLocal');
+      if(lang===null) {
+        console.log('date is null!');
+      }
+      else {
+        this.date = JSON.parse(lang);
+        console.log(this.date);
+      }
+      
+
     })
   }
 
