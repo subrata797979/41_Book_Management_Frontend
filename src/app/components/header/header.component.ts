@@ -10,14 +10,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   rangeValue: any;
-  range: any = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
-  });
+  range: any;
 
   date: any = {
-    start : null,
-    end : null
+    start : Date,
+    end : Date
   }
 
   @Output() toogleSidebarEvent: EventEmitter<any> = new EventEmitter();
@@ -25,6 +22,36 @@ export class HeaderComponent implements OnInit {
   constructor(private appService: AppService, private appRouter: Router) { }
 
   ngOnInit(): void {
+    this.setForm();
+  }
+
+  setForm() {
+    this.range = new FormGroup({
+      start: new FormControl('', null),
+      end: new FormControl('', null),
+    });
+    
+    const dateString: string | null = localStorage.getItem('dateLocal');
+    if(dateString===null) {
+      console.log('date field cannot be set as localstorage is empty');
+    }
+    else {
+      this.date = JSON.parse(dateString);
+    }
+    console.log(this.date);
+
+    // getting name and setting values respectively
+    this.range.get('start').setValue(new Date(this.date.start));
+    this.range.get('end').setValue(new Date(this.date.end));
+
+  }
+
+  // getters
+  get start() {
+    return this.range.get('start');
+  }
+  get end() {
+    return this.range.get('end');
   }
 
   public triggerToggleSidebar(): void{
@@ -36,6 +63,15 @@ export class HeaderComponent implements OnInit {
     this.date.start = dateRangeStart.value;
     this.date.end = dateRangeEnd.value;
     console.log(this.date);
+    localStorage.setItem('dateLocal', JSON.stringify(this.date));
+
+    // reload hack
+    if (!localStorage.getItem('foo2')) { 
+      localStorage.setItem('foo2', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo2') 
+    }
   }
 
 }

@@ -11,13 +11,16 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private appService: AppService, private bookService: BooksService) {}
+  constructor(private appService: AppService, private bookService: BooksService, private router: Router) {}
   ASSET_URL = environment.apiUrl;
   bookList: any;
+  totalBooks: any;
+  filteredData: any;
+  newBooks: any;
 
-  date: any = {
-    start : null,
-    end : null
+  date: any | null = {
+    start : new Date('12/13/2000'),
+    end : new Date('12/13/2021')
   }
 
   public cards:any = [
@@ -36,10 +39,63 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.appService.triggerResizeEvent();
     this.getBooks();
+
+    // waiting for data to show up
+    setTimeout(()=>{     
+      this.setCards();                    
+    }, 1000);
+    
   }
 
-  getBooks() {
-    
+  getBooks(){
+    this.bookService.getBooks().subscribe((data)=> {
+
+      // loggin data.data
+      console.log(data.data);
+
+      // getting data from api and setting it to booklist object
+      this.bookList = data.data;
+
+      // getting totalBooks from id
+      this.totalBooks = data.data.length;
+
+      // getting date obj from localstorage
+      const lang: string | null = localStorage.getItem('dateLocal');
+      if(lang===null) {
+        console.log('date is null!');
+      }
+      else {
+        this.date = JSON.parse(lang);
+        console.log(this.date);
+
+        // data filtered by date
+        this.filteredData = this.bookList.filter( (obj: { publishedDate: Date; }) => {
+          return (new Date(obj.publishedDate) >= new Date(this.date.start) && new Date(obj.publishedDate) <= new Date(this.date.end))
+        })
+
+        // reload hack
+        if (!localStorage.getItem('foo')) { 
+          localStorage.setItem('foo', 'no reload') 
+          location.reload() 
+        } else {
+          localStorage.removeItem('foo') 
+        }
+
+        console.log(this.filteredData);
+
+        // --------------------------------------
+        // 2. new books
+        this.newBooks = this.filteredData.length;
+        
+      }
+
+    })
+  }
+
+  setCards() {
+    console.log(this.totalBooks)
+    this.cards[0].total = this.totalBooks;
+    this.cards[1].total = this.newBooks;
   }
 
 }
