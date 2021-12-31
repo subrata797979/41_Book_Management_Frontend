@@ -9,7 +9,6 @@ export class CardComponent implements OnInit {
 
   @Input() public label: any;
   @Input() public total: any;
-  @Input() public percentage: any;
   constructor() { }
 
   ngOnInit(): void {

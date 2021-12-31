@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TableComponent } from './table/table.component';
 import { AppMaterialModule } from '../app-material.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 const components = [
   CardComponent,
@@ -22,6 +23,8 @@ const components = [
     CommonModule,
     RouterModule,
     AppMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: components,
 })

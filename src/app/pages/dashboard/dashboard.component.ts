@@ -1,5 +1,8 @@
+import { BooksService } from './../../services/books.service';
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "../../app.service";
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,37 +10,37 @@ import { AppService } from "../../app.service";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private appService: AppService) {}
+
+  constructor(private appService: AppService, private bookService: BooksService) {}
+  ASSET_URL = environment.apiUrl;
+  bookList: any;
+
+  date: any = {
+    start : null,
+    end : null
+  }
 
   public cards:any = [
     {
-      label: "India"
+      "title" : "Total Books",
+      "total" : "3.6K"
     },
     {
-      label: "Canada"
-    },
-    {
-      label: "Japan"
-    },
-    {
-      label: "Germany"
-    },
-    {
-      label: "India"
-    },
-    {
-      label: "Canada"
-    },
-    {
-      label: "Japan"
-    },
-    {
-      label: "Germany"
+      "title" : "New Books  ",
+      "total" : "51.33K"
     }
-  ];
+  ]
+
+
 
   ngOnInit(): void {
     this.appService.triggerResizeEvent();
+    this.getBooks();
   }
+
+  getBooks() {
+    
+  }
+
 }
 
