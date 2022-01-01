@@ -5,4 +5,6 @@
 
 .custom-card :hover > * {
     box-shadow: none;
+    font-weight: 700;
+    color: rgb(45, 174, 248);
 }

@@ -27,52 +27,64 @@ export class DashboardComponent implements OnInit {
 
   public cards:any = [
     {
+      "_id": "1",
       "title" : "Total Books",
       "total" : "3.6K"
     },
     {
+      "_id": "2",
       "title" : "New Books  ",
       "total" : "51.33K"
     },
     {
+      "_id": "3",
       "title" : "Average Pages / Book",
       "total" : "3.6K"
     },
     {
+      "_id": "4",
       "title" : "Total Books",
       "total" : "3.6K"
     },
     {
+      "_id": "5",
       "title" : "New Books  ",
       "total" : "51.33K"
     },
     {
+      "_id": "6",
       "title" : "Average Pages / Book",
       "total" : "3.6K"
     },
     {
+      "_id": "7",
       "title" : "Total Books",
       "total" : "3.6K"
     },
     {
+      "_id": "8",
       "title" : "New Books  ",
       "total" : "51.33K"
     },
     {
+      "_id": "9",
       "title" : "Average Pages / Book",
       "total" : "3.6K"
     },
     {
+      "_id": "10",
       "title" : "Total Books",
       "total" : "3.6K"
     },
     {
+      "_id": "11",
       "title" : "New Books  ",
       "total" : "51.33K"
     },
     {
+      "_id": "12",
       "title" : "ADD",
-      "total" : "(Another Field)"
+      "total" : "+"
     }
   ]
 
