@@ -6,6 +6,8 @@
             <th scope="col">Book Picture</th>
             <th scope="col">Book Name</th>
             <th scope="col">Book Description</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +16,8 @@
             <td><img src={{book.thumbnailUrl}} width="150" height="150"></td>
             <td>{{book.title}}</td>
             <td>{{book.shortDescription}}</td>
+            <td><button class="btn bg-dark text-white">=</button></td>
+            <td><button class="btn bg-danger text-white">x</button></td>
         </tr>
     </tbody>
 </table>

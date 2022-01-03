@@ -43,46 +43,26 @@ export class DashboardComponent implements OnInit {
     },
     {
       "_id": "4",
-      "title" : "Total Books",
-      "total" : "3.6K"
+      "title" : "Entry / Year",
+      "total" : "57"
     },
     {
       "_id": "5",
-      "title" : "New Books  ",
-      "total" : "51.33K"
+      "title" : "Removed",
+      "total" : "120"
     },
     {
       "_id": "6",
-      "title" : "Average Pages / Book",
-      "total" : "3.6K"
+      "title" : "Recent",
+      "total" : "85"
     },
     {
       "_id": "7",
-      "title" : "Total Books",
-      "total" : "3.6K"
+      "title" : "Authors",
+      "total" : "450"
     },
     {
       "_id": "8",
-      "title" : "New Books  ",
-      "total" : "51.33K"
-    },
-    {
-      "_id": "9",
-      "title" : "Average Pages / Book",
-      "total" : "3.6K"
-    },
-    {
-      "_id": "10",
-      "title" : "Total Books",
-      "total" : "3.6K"
-    },
-    {
-      "_id": "11",
-      "title" : "New Books  ",
-      "total" : "51.33K"
-    },
-    {
-      "_id": "12",
       "title" : "ADD",
       "total" : "+"
     }

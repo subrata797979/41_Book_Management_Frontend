@@ -1,6 +1,6 @@
 <div class="row">
   <div *ngFor="let card of cards" [ngClass]="'col-sm-6 col-md-4 col-lg-3'">
-    <app-card [label]="card.title | uppercase"  [total]="card.total" percentage="10" class="p-3 fs-3"></app-card>
+    <app-card [_id]="card._id" [label]="card.title | uppercase"  [total]="card.total" class="p-3 fs-3"></app-card>
   </div>
 </div>
 

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BooksComponent } from './books/books.component';
+import { AddBookComponent } from './add-book/add-book.component';
 import { AppMaterialModule } from '../app-material.module';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
 
-const pages = [DashboardComponent, MainComponent, BooksComponent];
+const pages = [DashboardComponent, MainComponent, BooksComponent, AddBookComponent];
 
 @NgModule({
   declarations: pages,

@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class LineChartComponent implements OnInit {
 
   constructor() { }
-
+  // coinId: any = this.activatedRoute.snapshot.paramMap.get("id");
+  
   ngOnInit(): void {
   }
 
