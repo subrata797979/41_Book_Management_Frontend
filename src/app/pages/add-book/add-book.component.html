@@ -4,7 +4,7 @@
           Book Entry
         </div>
         <div class="card-body">
-            <form (ngSubmit)="createBook()">
+            <form [formGroup]="bookForm" (ngSubmit)="createBook()">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Book Title</label>

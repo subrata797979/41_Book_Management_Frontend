@@ -7,6 +7,7 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { AppMaterialModule } from '../app-material.module';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const pages = [DashboardComponent, MainComponent, BooksComponent, AddBookComponent];
 
@@ -16,7 +17,9 @@ const pages = [DashboardComponent, MainComponent, BooksComponent, AddBookCompone
     CommonModule,
     AppMaterialModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: pages,
 })
