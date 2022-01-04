@@ -14,7 +14,7 @@ export class BooksService {
 
   createBook(data: any) {
     this.http
-      .post(this.API_URL + "/books", data)
+      .post(this.API_URL + "/books/create", data)
       .subscribe((res) => {
         if (res) {
           this.router.navigate(["/dashboard-books"]);

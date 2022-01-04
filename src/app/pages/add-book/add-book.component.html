@@ -1,61 +1,71 @@
 <div class="container">
     <div class="card">
         <div class="card-header bg-primary text-white fw-bolder fs-5">
-          Book Entry
+            <h3 class="card-title">Book Entry</h3>
+            <div *ngIf="updateResponse === 'Updated'" class="alert alert-success alert-dismissible" style="position: absolute;margin-left: 0px;right: 0;top: 0px;">
+                <button type="button" class="btn" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4>{{updateResponse}}</h4>
+            </div>
         </div>
         <div class="card-body">
             <form [formGroup]="bookForm" (ngSubmit)="createBook()">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
-                        <label class="form-label">Book Title</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <label class="form-label">Book Id</label>
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="_id">
                     </div>
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Book ISBN</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="isbn">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-2">
+                        <label class="form-label">Book Title</label>
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="title">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Total Pages</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="pageCount">
                     </div>
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Published Date</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="date" class="form-control" placeholder="Enter text here" formControlName="publishedDate">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Thumbnail Url</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="thumbnailUrl">
                     </div>
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Status</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="status">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Short Description</label>
-                        <textarea class="form-control" placeholder="Enter text here"></textarea>
+                        <textarea class="form-control" placeholder="Enter text here" formControlName="shortDescription"></textarea>
                     </div>
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Long Description</label>
-                        <textarea class="form-control" placeholder="Enter text here"></textarea>
+                        <textarea class="form-control" placeholder="Enter text here" formControlName="longDescription"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Author</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="authors">
                     </div>
                     <div class="col-sm-12 col-md-6 p-2">
                         <label class="form-label">Catagory</label>
-                        <input type="text" class="form-control" placeholder="Enter text here">
+                        <input type="text" class="form-control" placeholder="Enter text here" formControlName="categories">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary my-3">Submit</button>
+                <button type="submit" class="btn btn-primary my-3" [disabled]="bookForm?.invalid">Submit</button>
             </form>
         </div>
     </div>

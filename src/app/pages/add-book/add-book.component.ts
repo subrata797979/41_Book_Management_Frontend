@@ -9,36 +9,81 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular
 })
 export class AddBookComponent implements OnInit {
 
-  bookForm: any;
   constructor(private service: BooksService) { }
+
+  bookForm: any;
+  updateResponse: any;
 
   ngOnInit(): void {
     this.setForm();
-    this.setChangeValidate();
   }
 
   setForm() {
     this.bookForm = new FormGroup({
-      _id: new FormControl("", null),
-      title: new FormControl("", null),
-      isbn: new FormControl("", null),
-      pageCount: new FormControl("", null),
-      publishedDate: new FormControl("", null),
-      thumbnailUrl: new FormControl("", null),
-      shortDescription: new FormControl("", null),
-      longDescription: new FormControl("", null),
-      status: new FormControl("", null),
-      authors: new FormControl("", null),
-      categories: new FormControl("", null),
+      _id: new FormControl("", Validators.required),
+      title: new FormControl("", Validators.required),
+      isbn: new FormControl("", Validators.required),
+      pageCount: new FormControl("", Validators.required),
+      publishedDate: new FormControl("", Validators.required),
+      thumbnailUrl: new FormControl("", Validators.required),
+      shortDescription: new FormControl("", Validators.required),
+      longDescription: new FormControl("", Validators.required),
+      status: new FormControl("", Validators.required),
+      authors: new FormControl("", Validators.required),
+      categories: new FormControl("", Validators.required),
     });
   }
 
-  setChangeValidate() {
-    
+  get _id() {
+    return this.bookForm.get('_id');
+  }
+  get title() {
+    return this.bookForm.get('title');
+  }
+  get isbn() {
+    return this.bookForm.get('isbn');
+  }
+  get pageCount() {
+    return this.bookForm.get('pageCount');
+  }
+  get publishedDate() {
+    return this.bookForm.get('publishedDate');
+  }
+  get thumbnailUrl() {
+    return this.bookForm.get('thumbnailUrl');
+  }
+  get shortDescription() {
+    return this.bookForm.get('shortDescription');
+  }
+  get longDescription() {
+    return this.bookForm.get('longDescription');
+  }
+  get status() {
+    return this.bookForm.get('status');
+  }
+  get authors() {
+    return this.bookForm.get('authors');
+  }
+  get categories() {
+    return this.bookForm.get('categories');
   }
 
   createBook() {
-
+    if (this.bookForm.invalid) {
+      console.log("Invalid Form!!!");
+      return;
+    }
+    if (this.bookForm.valid) {
+      let data = this.bookForm.value;
+      console.log(data);
+  
+      setTimeout(() => {
+        this.service.createBook(data);
+      }, 3000);
+      
+      this.updateResponse = 'Updated';
+      console.log(this.updateResponse);
+    }
   }
 
 }
