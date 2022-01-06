@@ -24,9 +24,21 @@ export class BooksService {
   
   getBooks() {
     const model: Subject<any> = new Subject<any>();
-    this.http.get(this.API_URL + "/books").subscribe((res) => {
-      model.next({ data: res });
+    this.http
+      .get(this.API_URL + "/books")
+      .subscribe((res) => {
+        model.next({ data: res });
     });
+    return model;
+  }
+
+  getBookByIsbn(id: any) {
+    const model: Subject<any> = new Subject<any>();
+    this.http
+      .get(this.API_URL + "/books/book/" + id)
+      .subscribe((res) => {
+        model.next({ data: res });
+      });
     return model;
   }
 

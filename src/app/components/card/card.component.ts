@@ -22,7 +22,8 @@ export class CardComponent implements OnInit {
 
   isCardClicked() {
     console.log(this._id);
-    this.router.navigate(["dashboard-card-chart/" + this._id]);
+    const id = this._id;
+    this.router.navigate(["dashboard-card-chart/" + id]);
   }
 
 }

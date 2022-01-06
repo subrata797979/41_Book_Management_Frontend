@@ -78,6 +78,10 @@ export class DashboardComponent implements OnInit {
     setTimeout(()=>{     
       this.setCards();                    
     }, 1000);
+
+    if(this.filteredData===null) {
+      console.log("filte data null")
+    }
     
   }
 
@@ -116,6 +120,8 @@ export class DashboardComponent implements OnInit {
         }
 
         console.log(this.filteredData);
+        // set data to localStorage
+        localStorage.setItem('filteredData', JSON.stringify(this.filteredData));
 
         // --------------------------------------
         // 2. new books
