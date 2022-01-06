@@ -23,6 +23,8 @@ export class CardComponent implements OnInit {
   isCardClicked() {
     console.log(this._id);
     const id = this._id;
+    localStorage.setItem("cardId",this._id);
+    localStorage.setItem("cardLabel",this.label);
     this.router.navigate(["dashboard-card-chart/" + id]);
   }
 

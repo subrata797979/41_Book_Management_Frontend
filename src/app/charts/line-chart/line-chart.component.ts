@@ -12,16 +12,18 @@ export class LineChartComponent implements OnInit {
 
   dateData: any;
   filteredData: any;
+  filteredDataSortByIdDesc: any;
 
   canvas: any;
   ctx: any;
   chart: any;
 
   chartData: any;
-  label: any;
   data: any;
 
-  pageCount: any = [];
+  pageCountArray: any;
+  publishedDateArray: any;
+  
 
   @ViewChild('mychart') mychart:any;
 
@@ -33,16 +35,33 @@ export class LineChartComponent implements OnInit {
       type: 'line',
       data: {
           datasets: [{
-            label: 'Chart',
-            data: [0, 20, 40, 50],
+            label: 'Example',
+            data: [10,20,30,40,50],
             backgroundColor: "rgb(115 185 243 / 65%)",
             borderColor: "#007ee7",
             fill: false
           }],
-          labels: ['January 2019', 'February 2019', 'March 2019', 'April 2019']
+          labels: this.publishedDateArray
       },
     });
+    this.dynamicChart();
   }
+
+  addData(chart:any, label:any, data:any) {
+    chart.data.datasets[0].label = label;
+    chart.data.datasets[0].data = data;
+    chart.update();
+  }
+
+  removeData(chart: { data: { labels: void[]; datasets: any[]; }; update: () => void; }) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+  }
+
+  // ------------------------------------------------------------------------------ ngOnInit
 
   ngOnInit(): void {
     this.getDataFromLocal();
@@ -58,48 +77,52 @@ export class LineChartComponent implements OnInit {
       else {
         this.dateData = JSON.parse(Data1);
         this.filteredData = JSON.parse(Data2);
-        this.label = "demo";
-
-        // for each object in filteredData push pageCount field to pageCount[]
-          // traverse through array of objects
-          // store each pageCount
-        // print pageCount array
       }
-      // this.removeData(this.chart);
-      this.addData(this.chart, this.label, this.filteredData );
-  }
 
+      // PAGE ARRAY
+      this.pageCountArray = [];
+      this.filteredData.forEach((arrayItem: { pageCount: number; }) => {
+        this.pageCountArray.push(arrayItem.pageCount);
+      });
+
+      // PUBLISHED_DATE ARRAY
+      this.publishedDateArray = [];
+      this.filteredData.forEach((arrayItem: { publishedDate: Date; }) => {
+        // console.log(new Date(arrayItem.publishedDate).toUTCString().substring(5, 16));
+        this.publishedDateArray.push(new Date(arrayItem.publishedDate).toUTCString().substring(5, 16));
+      });
+
+
+      // this.removeData(this.chart);
+      // this.addData(this.chart, this.label, this.pageCountArray );
+  }
 
   showData() {
     console.log(this.dateData);
     console.log(this.filteredData);
   }
 
-  // chart functions
-
-  addData(chart: { data: { labels: any[]; datasets: any[]; }; update: () => void; }, label: any, data: any) {
-    // console.log(data[1].title);
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
+  // -----------------------------------------------------------
+  dynamicChart() {
+    const cardId = localStorage.getItem("cardId");
+    const cardLabel = localStorage.getItem("cardLabel");
+    console.log(cardId);
+      switch (cardId) {
+          case "1":
+            alert("Default Chart is Loaded!");
+            break;
+          case "2":
+            console.log("New Books");
+            
+            break;
+          case "3":
+            console.log("Average Pages / Book");
+            this.addData(this.chart, cardLabel, this.pageCountArray);
+            break;
+          default:
+            alert("Default Chart is Loaded!");
+            break;
+      }
   }
 
-  removeData(chart: { data: { labels: void[]; datasets: any[]; }; update: () => void; }) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.update();
-  }
-
-  onClickAddChart() {
-
-  }
-
-  onClickRemoveChart() {
-    
-  }
-  
 }

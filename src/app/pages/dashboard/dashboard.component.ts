@@ -119,7 +119,10 @@ export class DashboardComponent implements OnInit {
           localStorage.removeItem('foo') 
         }
 
+        
+        this.filteredData = this.filteredData.sort((a: { publishedDate: Date; }, b: { publishedDate: Date; }) => (a.publishedDate < b.publishedDate ? -1 : 1));
         console.log(this.filteredData);
+        
         // set data to localStorage
         localStorage.setItem('filteredData', JSON.stringify(this.filteredData));
 
